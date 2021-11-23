@@ -1,0 +1,13 @@
+body {
+    display: grid;
+    grid-template-columns: repeat(12, auto);
+    background-image: url(background.jpg);
+}
+html {
+    margin: 0;
+}
+h1 {
+    grid-column: 6/9;
+    font-size: 3em;
+    color: white;
+}
