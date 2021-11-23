@@ -6,9 +6,13 @@ axios.get('http://api.bryanuniversity.edu/kr/list/')
 .then(response => {
     console.log(response.data)
     for (let i = 0; i < response.data.length; i++){
-        const h1 = document.createElement('h1');
-        h1.textContent = response.data[i].name;
-        document.body.appendChild(h1);
+        const toDoList = document.createElement('h1');
+        toDoList.textContent = response.data[i].name;
+        document.body.appendChild(toDoList);
+
+        if (response.data[i].isComplete === true){
+            toDoList.setAttribute('class', 'strike')
+        }
     };
 })
 .catch(error => console.log(error))
