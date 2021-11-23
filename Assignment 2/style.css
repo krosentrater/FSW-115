@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    background-color: lightblue;
+    font-family: 'Source Code Pro', monospace;
+}
+.header {
+    margin: 15px 0px 15px 25px;
+    font-size: 3em;
+}
+li {
+    padding-left: 25px;
+    font-size: 2em;
+}
