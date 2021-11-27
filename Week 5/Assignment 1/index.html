@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <link rel='stylesheet' href='style.css'/>
+        <title>API Assignment</title>
+    </head>
+    <body>
+        <form id='todoForm'>
+            <label>Name:</label>
+            <input type='text' id='nameInput'/>
+            <label>Price:</label>
+            <input type='number' id='priceInput'/>
+            <label>Description:</label>
+            <input type='text' id='descriptionInput'/>
+            <label>Completed?</label>
+            <input type='checkbox' id='completeInput'/>
+            <button type='submit'>Submit</button>
+        </form>
+
+        <div id='todoList'></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src='main.js'></script>
+    </body>
+</html>

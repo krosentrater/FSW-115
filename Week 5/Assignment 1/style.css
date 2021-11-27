@@ -1,0 +1,66 @@
+html {
+    margin: 0;
+    background-color: rgba(33, 138, 187, 0.404)
+}
+.strike {
+    text-decoration: line-through;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(252, 185, 0, 0.514);
+    margin: 15px 25px 15px 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.322);
+    transition: 0.3s;
+}
+.strike:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.466);
+}
+.list-item {
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(252, 185, 0, 0.514);
+    margin: 15px 25px 15px 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.322);
+    transition: 0.3s;
+}
+.list-item:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.466);
+}
+#todoForm {
+    text-align: center;
+    font-size: large;
+}
+.completeButton {
+    height: 50px;
+    width: 100px;
+    display: flex; 
+    flex-direction: row;
+    font-size: large;
+    background-color: rgba(0, 128, 0, 0.603);
+    border-radius: 5px;
+}
+.completeButton:hover {
+    box-shadow: 4px 6px 6px 4px rgba(0, 0, 0, 0.76);
+}
+.incompleteButton {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    font-size: large;
+    width: 100px;
+    background-color: rgba(0, 89, 255, 0.603);
+    border-radius: 5px;
+}
+.incompleteButton:hover {
+    box-shadow: 4px 6px 6px 4px rgba(0, 0, 0, 0.76);
+}
+.deleteButton {
+    height: 50px;
+    width: 100px;
+    display: flex; 
+    flex-direction: row;
+    font-size: large;
+    background-color: rgba(255, 6, 6, 0.568);
+    border-radius: 5px;
+}
