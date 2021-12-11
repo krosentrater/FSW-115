@@ -1,0 +1,10 @@
+html {
+    margin: 0;
+    background-image:url(death-star.jpg);
+    color: yellow;
+}
+
+.characters {
+    display: grid;
+    grid-template-columns: auto auto;
+}
