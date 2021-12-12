@@ -4,13 +4,13 @@ const requestChar = (endPathway) => {
         .then(res => resolve(res.data.results))
         .catch(err => reject(err))
     }) 
-}
+};
 
 const initiate = () => {
-    let pathway = 'https://swapi.dev/api/people/?page=';
     let endPathway = '';
+    let pathway = `https://www.swapi.tech/api/people?page=$&limit=10`;
     let pendingPathways = [];
-    for (let i = 1; i < 10; i++){
+    for (let i = 1; i < 2; i++){
         endPathway = pathway + i;
         pendingPathways.push(requestChar(endPathway))
     };
@@ -29,9 +29,8 @@ let favCharacter;
 
 const displayChars = (organizedData) => {
     let container = document.querySelector('.characters');
-    console.log(organizedData)
     organizedData.forEach(character => {
-        
+
         let characterSlot = document.createElement('div');
         characterSlot.classList.add('char-div');
 
@@ -40,6 +39,7 @@ const displayChars = (organizedData) => {
         characterSlot.appendChild(innerCharacterSlot);
 
         let characterName = document.createElement('div');
+        characterName.id = 'actual-character';
         characterName.innerHTML = character.name
         innerCharacterSlot.appendChild(characterName);
 
@@ -47,30 +47,42 @@ const displayChars = (organizedData) => {
         favCharacter.innerHTML = 'Like';
         favCharacter.classList.add('fav-button');
         favCharacter.id = character.url;
+        favCharacter.addEventListener('click', addFavoriteCharacter);
         characterName.appendChild(favCharacter);
 
         container.append(characterSlot);
-
     })
 };
 
+const addFavoriteCharacter = async (e) => {
+    const favCharacterUrl = e.target.id;
+    const favCharacterData = await axios.get(favCharacterUrl)
+        .then(res => {
+            let newFavorite = res.data.result.properties.name;
 
+            let addNewFavoriteCharacter = {
+                name: newFavorite
+            };
 
-
-
-
-
+            axios.post('http://api.bryanuniversity.edu/kr/list/', addNewFavoriteCharacter)
+                .then(res => getFavoriteChars(res))
+                .catch(err => console.warn(err))
+        })
+        .catch(err => console.log(err))
+};
 
 const getFavoriteChars = () => {
     axios.get('http://api.bryanuniversity.edu/kr/list/')
         .then(response => displayFavoriteItems(response))
         .catch(error => console.log(error))
 };
+
 getFavoriteChars();
 
 const displayFavoriteItems = (response) => {
     let list = response.data;
     let favorites = document.querySelector('.fav-list');
+    favorites.innerHTML = '';
     list.forEach(item => {
         let listItem = document.createElement('h2');
         listItem.innerHTML = item.name;
@@ -84,6 +96,8 @@ const displayFavoriteItems = (response) => {
         listItem.appendChild(deleteFavorite);
         deleteFavorite.addEventListener('click', deleteFavoriteItems);
         favorites.appendChild(listItem);
+        
+
     });
 };
 
@@ -95,4 +109,15 @@ const deleteFavoriteItems = (event) => {
         .catch(error => console.warn(error))
 };
 
+const searchBar = () => {
+    let userInput = document.getElementById('search-input').value;
+    let addNewFavoriteCharacter = {
+        name: userInput
+    };
+    axios.post('http://api.bryanuniversity.edu/kr/list/', addNewFavoriteCharacter)
+        .then(res => getFavoriteChars(res))
+        .catch(err => console.warn(err))   
+}
 
+
+document.querySelector('.search-button').addEventListener('click', searchBar)
